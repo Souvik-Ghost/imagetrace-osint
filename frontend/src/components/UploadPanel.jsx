@@ -22,7 +22,7 @@ function UploadPanel({ onUploadSuccess }) {
     form.append("file", file);
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:8000/upload", form);
+      const response = await axios.post("/api/upload", form);
       onUploadSuccess(response.data);
     } catch (err) {
       console.error("Backend connection failed:", err);

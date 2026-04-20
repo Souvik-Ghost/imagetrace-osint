@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    },
+    {
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
       }
-    },
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
     }
   ],
   "routes": [
@@ -22,5 +22,8 @@
       "src": "/(.*)",
       "dest": "frontend/$1"
     }
-  ]
+  ],
+  "env": {
+    "PYTHON_VERSION": "3.11"
+  }
 }
