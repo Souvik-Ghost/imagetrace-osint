@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env
+
+# Node modules and build files
+node_modules/
+dist/
+build/
+.DS_Store
+
+# User uploads / temporary data
+backend/uploads/
+*.pdf
+*.log
+
+# OS-specific
+Thumbs.db
+Desktop.ini
