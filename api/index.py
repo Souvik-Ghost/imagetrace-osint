@@ -5,7 +5,10 @@ import uuid
 from http.server import BaseHTTPRequestHandler
 
 # Add backend to path so we can import agents
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
+root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+backend_path = os.path.join(root_path, 'backend')
+if backend_path not in sys.path:
+    sys.path.insert(0, backend_path)
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -35,8 +38,13 @@ if not os.path.exists(UPLOAD_DIR):
 
 
 @app.get("/api")
+@app.get("/api/health")
 def read_root():
-    return {"message": "ImageTrace OSINT API is Online (Serverless)."}
+    return {
+        "status": "online",
+        "message": "ImageTrace OSINT API is Online (Serverless).",
+        "version": "1.1.0"
+    }
 
 
 @app.post("/api/upload")

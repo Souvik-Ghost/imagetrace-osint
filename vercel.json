@@ -1,29 +1,25 @@
 {
   "version": 2,
-  "builds": [
+  "cleanUrls": true,
+  "framework": null,
+  "rewrites": [
     {
-      "src": "api/index.py",
-      "use": "@vercel/python"
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
     },
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
+      "source": "/(.*)",
+      "destination": "/frontend/dist/$1",
+      "continue": true
     },
     {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
+      "source": "/(.*)",
+      "destination": "/frontend/dist/index.html"
     }
   ],
   "env": {
     "PYTHON_VERSION": "3.11"
   }
 }
+
+
