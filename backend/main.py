@@ -21,14 +21,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "uploads")
+UPLOAD_DIR = "/tmp/imagetrace_uploads"
 if not os.path.exists(UPLOAD_DIR):
-    os.makedirs(UPLOAD_DIR)
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
 
+@app.get("/")
 @app.get("/api")
 def read_root():
-    return {"message": "ImageTrace OSINT API is Online (v1.1)."}
+    return {"message": "ImageTrace OSINT API is Online (v1.1.1).", "status": "healthy"}
 
+@app.post("/upload")
 @app.post("/api/upload")
 async def run_investigation(file: UploadFile = File(...)):
     """

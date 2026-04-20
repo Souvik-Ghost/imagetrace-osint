@@ -4,5 +4,6 @@ imagehash
 exifread
 Pillow
 pydantic
-Requests
+requests
 python-multipart
+mangum
