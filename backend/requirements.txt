@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+imagehash
+exifread
+Pillow
+pydantic
+Requests
+python-multipart
