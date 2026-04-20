@@ -25,11 +25,11 @@ UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "uploads")
 if not os.path.exists(UPLOAD_DIR):
     os.makedirs(UPLOAD_DIR)
 
-@app.get("/")
+@app.get("/api")
 def read_root():
-    return {"message": "ImageTrace OSINT API is Online."}
+    return {"message": "ImageTrace OSINT API is Online (v1.1)."}
 
-@app.post("/upload")
+@app.post("/api/upload")
 async def run_investigation(file: UploadFile = File(...)):
     """
     Primary endpoint for image-based investigations.

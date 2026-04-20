@@ -1,25 +1,19 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/index.py"
+  "experimentalServices": {
+    "frontend": {
+      "entrypoint": "frontend",
+      "routePrefix": "/",
+      "framework": "vite"
     },
-    {
-      "source": "/(.*)",
-      "destination": "/frontend/dist/$1",
-      "continue": true
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/frontend/dist/index.html"
+    "backend": {
+      "entrypoint": "backend",
+      "routePrefix": "/api",
+      "framework": "fastapi"
     }
-  ],
-  "env": {
-    "PYTHON_VERSION": "3.11"
   }
 }
+
 
 
